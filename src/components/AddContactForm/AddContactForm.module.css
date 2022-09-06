@@ -2,23 +2,22 @@
     display: block;
     margin-top: 35px;
     width: 600px;
-    
 }
+
 .input {
-    border:none;
+    border: none;
     border-bottom: 1px solid lightgray;
     position: absolute;
     font-size: 30px;
     margin-bottom: 50px;
-   
 }
 
 .input:focus {
     outline: none;
 }
 
-.input:focus + .label,
-.input:not(:placeholder-shown) + .label {
+.input:focus+.label,
+.input:not(:placeholder-shown)+.label {
     top: -50px;
     color: red;
 }
@@ -28,7 +27,6 @@
     border: none;
     height: 40px;
     cursor: pointer;
-
 }
 
 .icon {
@@ -36,13 +34,11 @@
 }
 
 .button:hover .icon,
-.button:focus .icon{
+.button:focus .icon {
     fill: #8e22d6;
 }
 
-
-
-.label{
+.label {
     transition: top 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
     position: relative;
     font-size: 30px;

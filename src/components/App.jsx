@@ -1,10 +1,8 @@
 import AddContactForm from './AddContactForm';
 import { Component } from 'react';
-import ContactList from './ContactList'
-import ContactFilter from './ContactFilter'
-import uniqid from 'uniqid'
-
-// const shortid = require('shortid');
+import ContactList from './ContactList';
+import ContactFilter from './ContactFilter';
+import uniqid from 'uniqid';
 
 class App extends Component {
   state = {
@@ -19,9 +17,9 @@ class App extends Component {
 
   deleteContact = contactId => {
     this.setState(prevState => ({
-      contacts: prevState.contacts.filter(contact => contact.id !== contactId)
-    }))
-  }
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
   addContact = contact => {
     this.setState(prevState => ({
       contacts: [
@@ -35,8 +33,8 @@ class App extends Component {
     }));
   };
   filterContacts = filter => {
-    this.setState({filter: filter})
-  }
+    this.setState({ filter: filter });
+  };
 
   render() {
     return (
@@ -49,15 +47,19 @@ class App extends Component {
           alignItems: 'center',
           fontSize: 40,
           color: '#010101',
-          padding: '0px 50px', 
-          gap: '20px'
+          padding: '0px 50px',
+          gap: '20px',
         }}
       >
-        <h1 style={{margin: '0px'}}>Phonebook</h1>
+        <h1 style={{ margin: '0px' }}>Phonebook</h1>
         <AddContactForm onSubmit={this.addContact} />
         <ContactFilter onFilterChange={this.filterContacts} />
-        <h2 style={{margin: '0px'}}>Contact list</h2>
-        <ContactList contacts={this.state.contacts} filter={this.state.filter} onDeleteContact={this.deleteContact}/>
+        <h2 style={{ margin: '0px' }}>Contact list</h2>
+        <ContactList
+          contacts={this.state.contacts}
+          filter={this.state.filter}
+          onDeleteContact={this.deleteContact}
+        />
       </div>
     );
   }
