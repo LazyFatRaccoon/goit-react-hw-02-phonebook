@@ -3,23 +3,17 @@ import css from './ContactList.module.css';
 import Contact from './Contact';
 import PropTypes from 'prop-types';
 
-const ContactList = ({ contacts, filter, onDeleteContact }) => {
+const ContactList = ({ contacts, onDeleteContact }) => {
   return (
     <ul className={css.ul}>
       {contacts.map(contact => {
-        if (
-          contact.name.toLowerCase().includes(filter.toLowerCase()) ||
-          contact.telephone.includes(filter)
-        ) {
-          return (
-            <Contact
-              key={contact.id}
-              contact={contact}
-              onDeleteContact={onDeleteContact}
-            />
-          );
-        }
-        return '';
+        return (
+          <Contact
+            key={contact.name}
+            contact={contact}
+            onDeleteContact={onDeleteContact}
+          />
+        );
       })}
     </ul>
   );
@@ -28,12 +22,10 @@ const ContactList = ({ contacts, filter, onDeleteContact }) => {
 ContactList.propTypes = {
   contacts: PropTypes.arrayOf(
     PropTypes.exact({
-      id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       telephone: PropTypes.string.isRequired,
     })
   ),
-  filter: PropTypes.string,
   onDeleteContact: PropTypes.func.isRequired,
 };
 
