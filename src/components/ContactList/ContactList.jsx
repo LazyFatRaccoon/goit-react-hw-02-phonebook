@@ -9,7 +9,7 @@ const ContactList = ({ contacts, onDeleteContact }) => {
       {contacts.map(contact => {
         return (
           <Contact
-            key={contact.name}
+            key={contact.id}
             contact={contact}
             onDeleteContact={onDeleteContact}
           />
@@ -22,6 +22,7 @@ const ContactList = ({ contacts, onDeleteContact }) => {
 ContactList.propTypes = {
   contacts: PropTypes.arrayOf(
     PropTypes.exact({
+      id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       telephone: PropTypes.string.isRequired,
     })

@@ -5,20 +5,29 @@ import ContactFilter from './ContactFilter';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 class App extends Component {
-  state = {
-    contacts: [
-      { name: 'Rosie Simpson', telephone: '459-12-56' },
-      { name: 'Hermione Kline', telephone: '443-89-12' },
-      { name: 'Eden Clements', telephone: '645-17-79' },
-      { name: 'Annie Copeland', telephone: '227-91-26' },
-    ],
-    filter: '',
-  };
+  constructor() {
+    super();
+    this.state = {
+      contacts: [
+        { id: 'id-1', name: 'Rosie Simpson', telephone: '459-12-56' },
+        { id: 'id-2', name: 'Hermione Kline', telephone: '443-89-12' },
+        { id: 'id-3', name: 'Eden Clements', telephone: '645-17-79' },
+        { id: 'id-4', name: 'Annie Copeland', telephone: '227-91-26' },
+      ],
+      filter: '',
+      
+    };
+    this.idCount = this.state.contacts.length;
+  }
+
+  
+
+  
 
   deleteContact = contactId => {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(
-        contact => contact.name !== contactId
+        contact => contact.id !== contactId
       ),
     }));
   };
@@ -32,9 +41,11 @@ class App extends Component {
       Notify.warning('we already got this contact');
       return;
     }
+    this.idCount += 1;
     this.setState(prevState => ({
       contacts: [
         {
+          id : `id-${this.idCount}`,
           name: contact.name,
           telephone: contact.telephone,
         },

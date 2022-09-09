@@ -12,7 +12,7 @@ const Contact = ({ contact, onDeleteContact }) => {
       <button
         className={css.button}
         type="button"
-        onClick={() => onDeleteContact(contact.name)}
+        onClick={() => onDeleteContact(contact.id)}
       >
         <FaTrashAlt className={css.icon} size={40} />
       </button>
@@ -22,6 +22,7 @@ const Contact = ({ contact, onDeleteContact }) => {
 
 Contact.propTypes = {
   contact: PropTypes.exact({
+    id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     telephone: PropTypes.string.isRequired,
   }).isRequired,
